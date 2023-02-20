@@ -1,27 +1,9 @@
-version: "3.8"
-
 services:
-    Xtitle_docker:
-        build:
-            context: .
-            dockerfile: ./docker/Dockerfile
-        container_name: Intern2023
-        working_dir: /var/www/html
-        ports:
-            - "80:80"
+
+    laravel-docker:
+        container_name: laravel-docker
+        build: .
         volumes:
             - .:/var/www/html
-            - ./docker/nginx_log:/var/log/nginx
-            - ./docker/php-fpm/php-fpm.log:/var/log/php-fpm.log
-            - ./docker/config/app.conf:/etc/nginx/conf.d/app.conf
-        links:
-            - mariadb
-    mariadb:
-        image: mariadb
-        restart: always
-        environment:
-            MYSQL_ROOT_PASSWORD: Intern2023
-        volumes:
-            - ./docker/mysql:/var/lib/mysql
         ports:
-            - 3306:3306
+            - 9000:80
