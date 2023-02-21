@@ -38,8 +38,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
         \Log::debug("aaa");
+        $posts = Post::all();
         return response()->json([
             'status' => true,
             'posts' => $posts
